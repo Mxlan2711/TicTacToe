@@ -9,7 +9,7 @@ public:
 
     std::pair<int,int> Turn() {
         std::pair<int,int> turn;
-        std::cout << "Player X: Wo setzen? (row and column 0-2): ";
+        std::cout << "Player " << symbol << ": Wo setzen? (row and column 0-2): ";
         std::cin >> turn.first >> turn.second;
         return turn;
     }
@@ -17,28 +17,26 @@ public:
     char getSymbol() const {
         return symbol;
     }
-
 };
 
-/*class Player2 {
-private:
-    char symbol = '0';
-public:
-    std::pair<int,int> player2Turn() {
-        std::pair<int,int> turn;
-        std::cout << "Player 0: Wo setzen? (row and column 0-2): ";
-        std::cin >> turn.first >> turn.second;
-        return turn;
+
+std::pair <int,int> checkIf(Player& player, char table[3][3]){
+    std::pair<int, int> move;
+    while (true) {
+        move = player.Turn();
+        if (move.first < 0 || move.first > 2 || move.second < 0 || move.second > 2) {
+            std::cout << "Invalid position. Try again.\n";
+            continue;
+        }
+
+        if (table[move.first][move.second] != ' ') {
+            std::cout << "Cell already taken. Try again.\n";
+            continue;
+        }
+        break;
     }
-    char getSymbol() const{
-        return symbol;
-    }
-
-};*/
-
-
-
-
+    return move;
+}
 
 bool isWin(char table[3][3], char symbol)  {
     for (int i = 0; i < 3; ++i) {
@@ -70,9 +68,6 @@ void printTable(char table[3][3], Player& p1, Player& p2) {
 }
 
 
-
-
-
 int main() {
     Player player1('X');
     Player player2('0');
@@ -88,19 +83,11 @@ int main() {
 
 
     while (true) {
-        std::pair<int, int> MyTurn = player1.Turn();
 
-        if (MyTurn.first < 0 || MyTurn.first > 2 || MyTurn.second < 0 || MyTurn.second > 2) {
-            std::cout << "Invalid position. Try again.\n";
-            continue;
-        }
+        auto move1 = checkIf(player1,table);
 
-        if (table[MyTurn.first][MyTurn.second] != ' ') {
-            std::cout << "Cell already taken. Try again.\n";
-            continue;
-        }
         turncount++;
-        table[MyTurn.first][MyTurn.second] = player1.getSymbol();
+        table[move1.first][move1.second] = player1.getSymbol();
         printTable(table, player1, player2);
 
         if (isWin(table, player1.getSymbol())) {
@@ -112,20 +99,9 @@ int main() {
             return 1;
         }
 
-        std::pair<int, int> PlayerTurn = player2.Turn();
-
-
-        if (PlayerTurn.first < 0 || PlayerTurn.first > 2 || PlayerTurn.second < 0 || PlayerTurn.second > 2) {
-            std::cout << "Invalid position. Try again.\n";
-            continue;
-        }
-
-        if (table[PlayerTurn.first][PlayerTurn.second] != ' ') {
-            std::cout << "Cell already taken. Try again.\n";
-            continue;
-        }
+        auto move2 = checkIf(player2,table);
         turncount++;
-        table[PlayerTurn.first][PlayerTurn.second] = player2.getSymbol();
+        table[move2.first][move2.second] = player2.getSymbol();
         printTable(table, player1, player2);
 
             if (isWin(table,player2.getSymbol())){
