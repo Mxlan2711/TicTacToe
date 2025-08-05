@@ -90,6 +90,7 @@ int main() {
 
     printTable(table,p1,p2);
 
+
     while (true) {
 
         std::pair<int,int> MyTurn = Player1::player1Turn();
@@ -104,7 +105,7 @@ int main() {
             continue;
         }
 
-            table[MyTurn.first][MyTurn.second] = p1.getSymbol();
+        table[MyTurn.first][MyTurn.second] = p1.getSymbol();
             printTable(table, p1, p2);
 
             if (p1.isWin(table)){
@@ -116,16 +117,16 @@ int main() {
 
             if (PlayerTurn.first < 0 || PlayerTurn.first > 2 || PlayerTurn.second < 0 || PlayerTurn.second > 2) {
             std::cout << "Invalid position. Try again.\n";
-            continue;
+                continue;
                 }
 
             if (table[PlayerTurn.first][PlayerTurn.second]  != ' ') {
             std::cout << "Cell already taken. Try again.\n";
-            continue;
+                continue;
                 }
 
             table[PlayerTurn.first][PlayerTurn.second] = p2.getSymbol();
-            printTable(table, p1, p2);
+                printTable(table, p1, p2);
 
 
             if (p2.isWin(table)){
