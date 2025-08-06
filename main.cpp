@@ -51,16 +51,27 @@ bool isWin(char table[3][3], char symbol)  {
 
 
 void printTable(char table[3][3], Player& p1, Player& p2) {
+    std::cout << "\n    ";
+    for (int i = 0; i < 3; ++i) {
+        std::cout << i << " ";
+    }
+    std::cout << std::endl;
+    std::cout << "   ";
+    for (int i = 0; i < 3; ++i) {
+        std::cout << " _";
+    }
+    std::cout << std::endl;
     for (int i = 0; i < 3; i++){
+        std::cout << i << " | ";
         for (int j = 0; j < 3; j++){
             if (table[i][j] == ' '){
-                std::cout << '.';
+                std::cout << '.' << " ";
             }
             else if (table[i][j] == p1.getSymbol()){
-                std::cout << p1.getSymbol();
+                std::cout << p1.getSymbol() << " ";
             }
             else if (table[i][j] == p2.getSymbol()) {
-                std::cout << p2.getSymbol();
+                std::cout << p2.getSymbol() << " ";
             }
         }
         std::cout << "\n";
@@ -100,19 +111,20 @@ int main() {
         }
 
         auto move2 = checkIf(player2,table);
+
         turncount++;
         table[move2.first][move2.second] = player2.getSymbol();
         printTable(table, player1, player2);
 
-            if (isWin(table,player2.getSymbol())){
-                std::cout << "Player " << player2.getSymbol() << " wins!\n";
-                break;
-            }
+        if (isWin(table,player2.getSymbol())){
+            std::cout << "Player " << player2.getSymbol() << " wins!\n";
+            break;
+        }
 
-            if (turncount == 9){
-                std::cout << "\nunentschieden!" << std::endl;
-                return 1;
-            }
+        if (turncount == 9){
+            std::cout << "\nunentschieden!" << std::endl;
+            return 1;
+        }
 
     }
     return 0;
