@@ -19,6 +19,17 @@ public:
     }
 };
 
+void welcomeScreen(){
+
+    std::cout << "\n _ _ _ _ _ _ " << std::endl;
+    std::cout << "|           |" << std::endl;
+    std::cout << "| TicTacToe |";
+    std::cout << "\n|_ _ _ _ _ _|" << std::endl;
+    std::cout << std::endl;
+
+
+}
+
 
 std::pair <int,int> checkIf(Player& player, char table[3][3]){
     std::pair<int, int> move;
@@ -90,6 +101,7 @@ int main() {
         for (int j = 0; j < 3; ++j)
             table[i][j] = ' ';
 
+    welcomeScreen();
     printTable(table,player1,player2);
 
 
