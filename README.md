@@ -25,5 +25,6 @@ zu üben.
 ### 💻 Kompilieren
 
 ```bash
-g++ -o tic_tac_toe main.cpp
+g++ -o KITicTacToe main.cpp
+
 
