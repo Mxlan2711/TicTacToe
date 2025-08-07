@@ -2,7 +2,7 @@
 
 ## 📌 Projektbeschreibung
 
-Dies ist ein einfaches Konsolen-Tic-Tac-Toe-Spiel (auch bekannt als "Drei gewinnt"), das in C++ geschrieben wurde. 
+Dies ist ein einfaches Konsolen-Tic-Tac-Toe-Spiel zum spielen zu zweit oder gegen eine einfache KI, das in C++ geschrieben wurde. 
 Zwei Spieler treten abwechselnd gegeneinander an – Spieler `X` und Spieler `0`. 
 Das Spiel überprüft Eingaben, erkennt Sieger oder ein Unentschieden und gibt das aktuelle Spielfeld nach jedem Zug aus.
 
