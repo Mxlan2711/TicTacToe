@@ -18,12 +18,12 @@ This project is ideal for C++ beginners to practice working with:
 
 ## ⚙️ Compilation and Execution
 
-### 🔧 Requirements
+###  Requirements
 
 - A C++ compiler (e.g. `g++`)
 - Terminal or command line interface
 
-### 💻 Compile
+###  Compile
 
 ```bash
 g++ -o KITicTacToe main.cpp
