@@ -1,7 +1,7 @@
 #include <iostream>
 #include <utility>
-#include <cstdlib>  // für rand() und srand()
-#include <ctime>    // für time()
+#include <cstdlib>
+#include <ctime>
 
 
 class Playerbase {
@@ -16,6 +16,7 @@ public:
     char getSymbol() const {
         return symbol;
     }
+
 };
 
 
@@ -34,7 +35,7 @@ public:
 
     class KIPlayer : public Playerbase {
     public:
-        KIPlayer(char s) : Playerbase(s) {}            // Konstruktor der Basisklasse wird aufgerufen
+        KIPlayer(char s) : Playerbase(s) {}
 
             std::pair<int,int> Turn() const override {
                     std::pair<int,int> turn;
@@ -141,9 +142,8 @@ int main() {
 
     char table[3][3];
     int turncount = 0;
-    std::srand(std::time(nullptr)); // Initialisierung mit aktuellem Zeitstempel
-
-    // Initialize table
+    std::srand(std::time(nullptr));
+    
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
             table[i][j] = ' ';
