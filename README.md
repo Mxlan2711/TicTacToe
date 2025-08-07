@@ -2,7 +2,8 @@
 
 ### 📌 Project Description
 
-This is a simple **CLI-based** Tic-Tac-Toe game written in C++. One version is for two players, and another version allows playing against a basic AI.
+simple **CLI-based** Tic-Tac-Toe game written in C++. 
+One version is for two players, and another version allows playing against a basic AI.
 
 In **"TicTacToe2Player.cpp"**, two players take turns competing against each other — Player `X` and Player `O`.
 The game validates inputs, detects winners or draws, and displays the current board after each move.
