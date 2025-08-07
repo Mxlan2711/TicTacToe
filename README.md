@@ -1,32 +1,29 @@
 # ✖️⭕ Tic-Tac-Toe in C++
 
-## 📌 Projektbeschreibung
+## 📌 Project Description
 
-Dies ist ein einfaches Konsolen-Tic-Tac-Toe-Spiel, das in C++ geschrieben wurde. Eine Version ist zum spielen zu zweit und eine Version zum spielen gegen eine einfache KI.
+This is a simple console-based Tic-Tac-Toe game written in C++. One version is for two players, and another version allows playing against a basic AI.
 
-Bei "TicTacToe2Player.cpp" treten abwechselnd 2 Spieler gegeneinander an – Spieler `X` und Spieler `0`.
-Das Spiel überprüft Eingaben, erkennt Sieger oder ein Unentschieden und gibt das aktuelle Spielfeld nach jedem Zug aus.
+In **"TicTacToe2Player.cpp"**, two players take turns competing against each other — Player `X` and Player `O`.
+The game validates inputs, detects winners or draws, and displays the current board after each move.
 
-Dieses Projekt ist ideal für Einsteiger in C++, um den Umgang mit:
-- Klassen und Objekten,
-- Vererbung und Polymorphie,
-- Ein- und Ausgabe,
-- Arrays,
-- Spiellogik
-zu üben.
+This project is ideal for C++ beginners to practice working with:
+- Classes and objects
+- Inheritance and polymorphism
+- Input and output
+- Arrays
+- Game logic
 
 ---
 
-## ⚙️ Kompilierung und Ausführung
+## ⚙️ Compilation and Execution
 
-### 🔧 Voraussetzungen
+### 🔧 Requirements
 
-- Ein C++ Compiler (z. B. `g++`)
-- Terminal oder Konsole
+- A C++ compiler (e.g. `g++`)
+- Terminal or command line interface
 
-### 💻 Kompilieren
+### 💻 Compile
 
 ```bash
 g++ -o KITicTacToe main.cpp
-
-
