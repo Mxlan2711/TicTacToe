@@ -143,7 +143,7 @@ int main() {
     char table[3][3];
     int turncount = 0;
     std::srand(std::time(nullptr));
-    
+
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
             table[i][j] = ' ';
