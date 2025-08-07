@@ -31,6 +31,13 @@ g++ -o TicTacToe2Player TicTacToe2Player.cpp
 ```
 
 ### Execute
+<<<<<<< HEAD
 ```bash
 ./TicTacToe2Player
 ```
+=======
+
+```bash
+./TicTacToe2Player
+
+>>>>>>> 6cd7be0 (changed README)
