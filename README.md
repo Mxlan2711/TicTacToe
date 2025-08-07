@@ -1,6 +1,6 @@
-# ✖️⭕ Tic-Tac-Toe in C++
+## ✖️⭕ Tic-Tac-Toe in C++
 
-## 📌 Project Description
+### 📌 Project Description
 
 This is a simple **CLI-based** Tic-Tac-Toe game written in C++. One version is for two players, and another version allows playing against a basic AI.
 
