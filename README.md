@@ -1,0 +1,29 @@
+# ✖️⭕ Tic-Tac-Toe in C++
+
+## 📌 Projektbeschreibung
+
+Dies ist ein einfaches Konsolen-Tic-Tac-Toe-Spiel (auch bekannt als "Drei gewinnt"), das in C++ geschrieben wurde. 
+Zwei Spieler treten abwechselnd gegeneinander an – Spieler `X` und Spieler `0`. 
+Das Spiel überprüft Eingaben, erkennt Sieger oder ein Unentschieden und gibt das aktuelle Spielfeld nach jedem Zug aus.
+
+Dieses Projekt ist ideal für Einsteiger in C++, um den Umgang mit:
+- Klassen und Objekten,
+- Ein- und Ausgabe,
+- Arrays,
+- Spiellogik
+zu üben.
+
+---
+
+## ⚙️ Kompilierung und Ausführung
+
+### 🔧 Voraussetzungen
+
+- Ein C++ Compiler (z. B. `g++`)
+- Terminal oder Konsole
+
+### 💻 Kompilieren
+
+```bash
+g++ -o tic_tac_toe main.cpp
+
