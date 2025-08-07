@@ -28,3 +28,9 @@ This project is ideal for C++ beginners to practice working with:
 
 ```bash
 g++ -o TicTacToe2Player TicTacToe2Player.cpp
+```
+
+### Execute
+```bash
+./TicTacToe2Player
+```
