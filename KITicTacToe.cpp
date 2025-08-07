@@ -22,7 +22,7 @@ public:
 
     class MyPlayer : public Playerbase {
     public:
-        MyPlayer(char s) : Playerbase(s) {}  // Konstruktor der Basisklasse wird aufgerufen
+        MyPlayer(char s) : Playerbase(s) {}  
 
             std::pair<int,int> Turn() const override {
                     std::pair<int,int> turn;
@@ -58,7 +58,7 @@ void welcomeScreen(){
 
 }
 
-std::pair <int,int> checkIfForPlayer(MyPlayer& player, char table[3][3]){   // Funktion eventuell bündeln mit checkIfForKI(Playerbase& player). Durch die Übergabe von Playerbase kann man beide Player verwenden
+std::pair <int,int> checkIfForPlayer(MyPlayer& player, char table[3][3]){   // Consider merging this function with checkIfForKI(Playerbase& player). Passing a Playerbase reference allows access to both players.
     std::pair<int, int> move;
     while (true) {
         move = player.Turn();
@@ -78,8 +78,8 @@ std::pair <int,int> checkIfForPlayer(MyPlayer& player, char table[3][3]){   // F
 
 
 std::pair <int,int> checkIfForKI(KIPlayer& player, char table[3][3]) {
-        std::pair<int,int> move;
-        while (true) {
+      std::pair<int,int> move;
+      while (true) {
         move = player.Turn();
          if (move.first < 0 || move.first > 2 || move.second < 0 || move.second > 2) {
             continue;
@@ -88,6 +88,7 @@ std::pair <int,int> checkIfForKI(KIPlayer& player, char table[3][3]) {
         if (table[move.first][move.second] != ' ') {
             continue;
         }
+
         std::cout << "KI setzt Zug: " << std::endl;
         break;
     }
