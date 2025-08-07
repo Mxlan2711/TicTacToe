@@ -9,7 +9,7 @@ Das Spiel überprüft Eingaben, erkennt Sieger oder ein Unentschieden und gibt d
 
 Dieses Projekt ist ideal für Einsteiger in C++, um den Umgang mit:
 - Klassen und Objekten,
-- Vererbung und Polymorphie
+- Vererbung und Polymorphie,
 - Ein- und Ausgabe,
 - Arrays,
 - Spiellogik
