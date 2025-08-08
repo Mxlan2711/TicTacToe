@@ -98,9 +98,9 @@ std::pair <int,int> checkIfForKI(KIPlayer& player, char table[3][3]) {
 
 
 bool isWin(char table[3][3], char symbol)  {
-    for (int i = 0; i < 3; ++i) {
-        if (table[i][0] == symbol && table[i][1] == symbol && table[i][2] == symbol) return true;
-        if (table[0][i] == symbol && table[1][i] == symbol && table[2][i] == symbol) return true;
+    for (int row = 0; row < 3; ++row) {
+        if (table[row][0] == symbol && table[row][1] == symbol && table[row][2] == symbol) return true;
+        if (table[0][row] == symbol && table[1][row] == symbol && table[2][row] == symbol) return true;
     }
     if (table[0][0] == symbol && table[1][1] == symbol && table[2][2] == symbol) return true;
     if (table[0][2] == symbol && table[1][1] == symbol && table[2][0] == symbol) return true;
@@ -119,16 +119,16 @@ void printTable(char table[3][3], Playerbase& p1, Playerbase& p2) {
         std::cout << " _";
     }
     std::cout << std::endl;
-    for (int i = 0; i < 3; i++){
-        std::cout << i << " | ";
-        for (int j = 0; j < 3; j++){
-            if (table[i][j] == ' '){
+    for (int row = 0; row < 3; row++){
+        std::cout << row << " | ";
+        for (int col = 0; col < 3; col++){
+            if (table[row][col] == ' '){
                 std::cout << '.' << " ";
             }
-            else if (table[i][j] == p1.getSymbol()){
+            else if (table[row][col] == p1.getSymbol()){
                 std::cout << p1.getSymbol() << " ";
             }
-            else if (table[i][j] == p2.getSymbol()) {
+            else if (table[row][col] == p2.getSymbol()) {
                 std::cout << p2.getSymbol() << " ";
             }
         }
@@ -145,9 +145,9 @@ int main() {
     int turncount = 0;
     std::srand(std::time(nullptr));
 
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            table[i][j] = ' ';
+    for (int row = 0; row < 3; ++row) {
+        for (int col = 0; col < 3; ++col) {
+            table[row][col] = ' ';
 }
 }
     welcomeScreen();
