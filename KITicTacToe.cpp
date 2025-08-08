@@ -10,10 +10,10 @@ protected:
 public:
     Playerbase(char s) : symbol(s) {}
 
-    virtual std::pair<int,int> Turn() const = 0;
+    virtual std::pair<int,int> Turn() = 0;
     virtual ~Playerbase() = default;
 
-    char getSymbol() const {
+    char getsymbol() const {
         return symbol;
     }
 
@@ -24,7 +24,7 @@ public:
     public:
         MyPlayer(char s) : Playerbase(s) {}  
 
-            std::pair<int,int> Turn() const override {
+            std::pair<int,int> Turn() override {
                     std::pair<int,int> turn;
                     std::cout << "Player " << symbol << ": Wo setzen? (row and column 0-2): ";
                     std::cin >> turn.first >> turn.second;
@@ -37,7 +37,7 @@ public:
     public:
         KIPlayer(char s) : Playerbase(s) {}
 
-            std::pair<int,int> Turn() const override {
+            std::pair<int,int> Turn() override {
                     std::pair<int,int> turn;
                     turn.first = std::rand() % 3;
                     turn.second = std::rand() % 3;
@@ -47,144 +47,136 @@ public:
 
     };
 
-void welcomeScreen(){
+
+void welcomeScreen() {
 
     std::cout << "\n _ _ _ _ _ _ " << std::endl;
     std::cout << "|           |" << std::endl;
     std::cout << "| TicTacToe |";
     std::cout << "\n|_ _ _ _ _ _|" << std::endl;
     std::cout << std::endl;
-
-
 }
 
-std::pair <int,int> checkIfForPlayer(MyPlayer& player, char table[3][3]){   // Consider merging this function with checkIfForKI(Playerbase& player). Passing a Playerbase reference allows access to both players.
-    std::pair<int, int> move;
-    while (true) {
-        move = player.Turn();
-        if (move.first < 0 || move.first > 2 || move.second < 0 || move.second > 2) {
-            std::cout << "Invalid position. Try again.\n";
-            continue;
-        }
-
-        if (table[move.first][move.second] != ' ') {
-            std::cout << "Cell already taken. Try again.\n";
-            continue;
-        }
-        break;
-    }
-    return move;
-}
-
-
-std::pair <int,int> checkIfForKI(KIPlayer& player, char table[3][3]) {
-      std::pair<int,int> move;
-      while (true) {
-        move = player.Turn();
-         if (move.first < 0 || move.first > 2 || move.second < 0 || move.second > 2) {
-            continue;
-        }
-
-        if (table[move.first][move.second] != ' ') {
-            continue;
-        }
-
-        std::cout << "KI setzt Zug: " << std::endl;
-        break;
-    }
-    return move;
-}
-
-
-
-bool isWin(char table[3][3], char symbol)  {
-    for (int row = 0; row < 3; ++row) {
-        if (table[row][0] == symbol && table[row][1] == symbol && table[row][2] == symbol) return true;
-        if (table[0][row] == symbol && table[1][row] == symbol && table[2][row] == symbol) return true;
-    }
-    if (table[0][0] == symbol && table[1][1] == symbol && table[2][2] == symbol) return true;
-    if (table[0][2] == symbol && table[1][1] == symbol && table[2][0] == symbol) return true;
-
-    return false;
-}
-
-void printTable(char table[3][3], Playerbase& p1, Playerbase& p2) {
-    std::cout << "\n    ";
-    for (int i = 0; i < 3; ++i) {
-        std::cout << i << " ";
-    }
-    std::cout << std::endl;
-    std::cout << "   ";
-    for (int i = 0; i < 3; ++i) {
-        std::cout << " _";
-    }
-    std::cout << std::endl;
-    for (int row = 0; row < 3; row++){
-        std::cout << row << " | ";
-        for (int col = 0; col < 3; col++){
-            if (table[row][col] == ' '){
-                std::cout << '.' << " ";
+    class Game {
+    private:
+        char table[3][3];
+        Playerbase& player1;
+        Playerbase& player2;
+        int turncount;
+    public:
+        Game(Playerbase& p1, Playerbase& p2) : player1(p1), player2(p2),turncount(0) {
+                for (int i = 0; i < 3; ++i)
+                    for (int j = 0; j < 3; ++j)
+                        table[i][j] = ' ';
             }
-            else if (table[row][col] == p1.getSymbol()){
-                std::cout << p1.getSymbol() << " ";
+
+
+        bool isWin(char symbol)  {
+            for (int row = 0; row < 3; ++row) {
+                if (table[row][0] == symbol && table[row][1] == symbol && table[row][2] == symbol) return true;
+                if (table[0][row] == symbol && table[1][row] == symbol && table[2][row] == symbol) return true;
             }
-            else if (table[row][col] == p2.getSymbol()) {
-                std::cout << p2.getSymbol() << " ";
+            if (table[0][0] == symbol && table[1][1] == symbol && table[2][2] == symbol) return true;
+            if (table[0][2] == symbol && table[1][1] == symbol && table[2][0] == symbol) return true;
+
+            return false;
+        }
+
+        void printTable() {
+            std::cout << "\n    ";
+            for (int i = 0; i < 3; ++i) {
+                std::cout << i << " ";
+            }
+            std::cout << std::endl;
+            std::cout << "   ";
+            for (int i = 0; i < 3; ++i) {
+                std::cout << " _";
+            }
+            std::cout << std::endl;
+            for (int row = 0; row < 3; row++){
+                std::cout << row << " | ";
+                for (int col = 0; col < 3; col++){
+                    if (table[row][col] == ' '){
+                        std::cout << '.' << " ";
+                    }
+                    else if (table[row][col] == player1.getsymbol()){
+                        std::cout << player1.getsymbol() << " ";
+                    }
+                    else if (table[row][col] == player2.getsymbol()) {
+                        std::cout << player2.getsymbol() << " ";
+                    }
+                }
+                std::cout << "\n";
             }
         }
-        std::cout << "\n";
-    }
-}
+
+        std::pair <int,int> checkIf(Playerbase& player, char table[3][3]){   
+            std::pair<int, int> move;
+            while (true) {
+                move = player.Turn();
+                if (move.first < 0 || move.first > 2 || move.second < 0 || move.second > 2) {
+                    continue;
+                }
+
+                if (table[move.first][move.second] != ' ') {
+                    continue;
+                }
+                turncount++;
+                break;
+            }
+            return move;
+        }
+
+        void run() {
+            welcomeScreen();
+            printTable();
+
+
+            while (true) {
+                auto move1 = checkIf(player1,table);
+
+                table[move1.first][move1.second] = player1.getsymbol();
+                printTable();
+
+                if (isWin(player1.getsymbol())) {
+                    std::cout << "Player " << player1.getsymbol() << " wins!\n";
+                    break;
+                }
+
+                if (turncount == 9){
+                    std::cout << "unentschieden!" << std::endl;
+                    break;
+                }
+                std::cout << std::endl;
+                auto move2 = checkIf(player2,table);
+
+
+                table[move2.first][move2.second] = player2.getsymbol();
+                std::cout << "\nKI setzt Zug: \n";
+                printTable();
+
+                if (isWin(player2.getsymbol())){
+                    std::cout << "KI: " << " wins!\n";
+                    break;
+                }
+
+                if (turncount == 9){
+                    std::cout << "\nunentschieden!" << std::endl;
+                    break;
+                }
+            }
+        }
+    };
 
 
 int main() {
     MyPlayer player1('X');
     KIPlayer player2('O');
+    Game game(player1,player2);
 
-    char table[3][3];
-    int turncount = 0;
     std::srand(std::time(nullptr));
-
-    for (int row = 0; row < 3; ++row) {
-        for (int col = 0; col < 3; ++col) {
-            table[row][col] = ' ';
-}
-}
-    welcomeScreen();
-    printTable(table,player1,player2);
+    game.run();
 
 
-    while (true) {
-        auto move1 = checkIfForPlayer(player1,table);
-
-        turncount++;
-        table[move1.first][move1.second] = player1.getSymbol();
-        printTable(table, player1, player2);
-
-        if (isWin(table, player1.getSymbol())) {
-            std::cout << "Player " << player1.getSymbol() << " wins!\n";
-            break;
-        }
-        if (turncount == 9){
-            std::cout << "unentschieden!" << std::endl;
-            return 1;
-        }
-        std::cout << std::endl;
-        auto move2 = checkIfForKI(player2,table);
-
-        turncount++;
-        table[move2.first][move2.second] = player2.getSymbol();
-        printTable(table, player1, player2);
-
-        if (isWin(table,player2.getSymbol())){
-             std::cout << "KI: " << " wins!\n";
-              break;
-            }
-
-        if (turncount == 9){
-             std::cout << "\nunentschieden!" << std::endl;
-             return 1;
-            }
-    }
     return 0;
 }
